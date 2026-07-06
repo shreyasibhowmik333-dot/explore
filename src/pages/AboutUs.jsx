@@ -1,6 +1,6 @@
 import React from 'react';
 import aboutus1 from "../assets/journey.png";
-import aboutus2 from "../assets/Culture.webp";
+import aboutus2 from "../assets/culture.webp";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineFlight } from "react-icons/md";
 import { GiWorld } from "react-icons/gi";
