@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+const API = "explore-backend-blush.vercel.app"
+
 // ================= Initial State =================
 const initialState = {
   packages: [],
@@ -20,7 +23,7 @@ export const fetchAllPackages = createAsyncThunk(
   async ({ page = 1, limit = 6 } = {}, thunkApi) => {
     try {
       const res = await axios.get(
-        `http://localhost:8003/destination/getAll?page=${page}&limit=${limit}`
+        `${API}/destination/getAll?page=${page}&limit=${limit}`
       );
 
       return {
@@ -51,7 +54,7 @@ export const addPackage = createAsyncThunk(
       }
 
       const res = await axios.post(
-        "http://localhost:8003/destination/add",
+        `${API}/destination/add`,
         formData,
         {
           headers: {
@@ -84,7 +87,7 @@ export const updatePackage = createAsyncThunk(
       }
 
       const res = await axios.put(
-        `http://localhost:8003/destination/update/${id}`,
+        `${API}/destination/update/${id}`,
         formData,
         {
           headers: {
@@ -117,7 +120,7 @@ export const deletePackage = createAsyncThunk(
       }
 
       await axios.delete(
-        `http://localhost:8003/destination/delete/${id}`,
+        `${API}/destination/delete/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

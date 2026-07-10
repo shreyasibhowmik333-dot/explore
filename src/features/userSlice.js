@@ -5,6 +5,8 @@ import axios from "axios";
 const tokenFromStorage = localStorage.getItem("token");
 const userFromStorage = localStorage.getItem("user");
 
+const API = "explore-backend-blush.vercel.app"
+
 const initialState = {
   user: userFromStorage ? JSON.parse(userFromStorage) : null,
   token: tokenFromStorage || null,
@@ -21,7 +23,7 @@ export const register = createAsyncThunk(
   async (registerData, thunkApi) => {
     try {
       const res = await axios.post(
-        "http://localhost:8003/user/register",
+        `${API}/user/register`,
         registerData
       );
       return res.data;
@@ -43,7 +45,7 @@ export const verify = createAsyncThunk(
     }
 
     const res = await axios.get(
-      `http://localhost:8003/user/verify?token=${encodeURIComponent(token)}`
+      `${API}/user/verify?token=${encodeURIComponent(token)}`
     );
     return res.data;
   }
@@ -58,7 +60,7 @@ export const login = createAsyncThunk(
   async (loginData, thunkApi) => {
     try {
       const res = await axios.post(
-        "http://localhost:8003/user/login",
+        `${API}/user/login`,
         loginData
       );
       return res.data;
@@ -78,7 +80,7 @@ export const logout = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        await axios.delete("http://localhost:8003/user/logout", {
+        await axios.delete(`${API}/user/logout`, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

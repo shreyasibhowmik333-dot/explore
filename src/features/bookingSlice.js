@@ -2,6 +2,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+const API= "explore-backend-blush.vercel.app"
+
 // Initial state
 const initialState = {
   bookings: [],
@@ -18,7 +21,7 @@ export const fetchAllBookings = createAsyncThunk(
 
       if (!token) throw new Error("User not authenticated");
 
-      const res = await axios.get("http://localhost:8003/booking/getAll", {
+      const res = await axios.get(`${API}/booking/getAll`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -43,7 +46,7 @@ export const createBooking = createAsyncThunk(
       if (user.role !== "viewer") throw new Error("Only viewers can book");
 
       const res = await axios.post(
-        "http://localhost:8003/booking/add",
+        `${API}/booking/add`,
         { travelId, seats },
         { headers: { Authorization: `Bearer ${token}` } }
       );
