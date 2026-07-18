@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-const API= "explore-backend-blush.vercel.app"
+const API= "https://explore-backend-blush.vercel.app"
 
 // Initial state
 const initialState = {

@@ -5,7 +5,7 @@ import axios from "axios";
 const tokenFromStorage = localStorage.getItem("token");
 const userFromStorage = localStorage.getItem("user");
 
-const API = "explore-backend-blush.vercel.app"
+const API = "https://explore-backend-blush.vercel.app"
 
 const initialState = {
   user: userFromStorage ? JSON.parse(userFromStorage) : null,

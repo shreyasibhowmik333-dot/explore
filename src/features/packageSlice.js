@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-const API = "explore-backend-blush.vercel.app"
+const API = "https://explore-backend-blush.vercel.app"
 
 // ================= Initial State =================
 const initialState = {
@@ -189,4 +189,12 @@ const packageSlice = createSlice({
 
 export const { setPage } = packageSlice.actions;
 export default packageSlice.reducer;
+
+
+
+
+
+
+
+
 
